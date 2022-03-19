@@ -1,47 +1,18 @@
 import React, { useState, useEffect, createContext } from "react";
-import { BooleanLiteral } from "typescript";
+import { routine } from "./types/routines_types";
 
-const initialContext: AppContextInterface = {
-  addRoutine: (routine: routine) => {
-    throw Error("must set init context");
-  },
-  removeRoutine: (routine: routine) => {
-    throw Error("must set init context");
-  },
-  updateRoutine: (routine: routine) => {
-    throw Error("must set init context");
-  },
-};
-
-const AppContext = createContext<AppContextInterface>(initialContext);
-
-interface habit_history {
-  date: number;
-  completed: boolean;
-}
-
-interface habits {
-  id: number;
-  history: habit_history[];
-}
-
-interface routine {
-  id: number;
-  title: string;
-  scheduling_function: string;
-  habits: habits[];
-}
+const AppContext = createContext<AppContextInterface>(
+  {} as AppContextInterface
+);
 
 interface AppContextInterface {
   addRoutine: (routine: routine) => void;
   removeRoutine: (routine: routine) => void;
   updateRoutine: (routine: routine) => void;
+  routines: routine[];
 }
 
-function AppContextProvider(
-  context: AppContextInterface,
-  children: React.ReactChildren
-) {
+const AppContextProvider: React.FC = ({ children }) => {
   const [routines, setRoutines] = useState<routine[]>([]);
 
   // Local Storage: setting & getting data
@@ -57,7 +28,7 @@ function AppContextProvider(
     localStorage.setItem("routines", JSON.stringify(routines));
   }, [routines]);
 
-  // functions for
+  // functions for updating state
 
   function addRoutine(routine: routine) {
     setRoutines((prevItems) => [...prevItems, routine]);
@@ -74,10 +45,12 @@ function AppContextProvider(
   }
 
   return (
-    <AppContext.Provider value={{ addRoutine, updateRoutine, removeRoutine }}>
+    <AppContext.Provider
+      value={{ routines, addRoutine, updateRoutine, removeRoutine }}
+    >
       {children}
     </AppContext.Provider>
   );
-}
+};
 
 export { AppContextProvider, AppContext };

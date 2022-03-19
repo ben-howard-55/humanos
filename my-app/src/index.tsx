@@ -1,37 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./index.css";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
-import App from './App';
-import Routine from './routes/routine';
-import DailyOverview from './routes/daily-overview';
-import Day from './routes/day';
+import App from "./App";
+import Routine from "./routes/routine";
+import DailyOverview from "./routes/daily-overview";
+import Day from "./routes/day";
+
+import { AppContextProvider } from "./context";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
+      <AppContextProvider>
+        <Routes>
           <Route path="/" element={<App />}>
             <Route path="routine" element={<Routine />} />
-            <Route path="dailyoverview" element={<DailyOverview />}> 
-              <Route path=":date" element={<Day/>}/>
+            <Route path="dailyoverview" element={<DailyOverview />}>
+              <Route path=":date" element={<Day />} />
             </Route>
           </Route>
           <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>404 page not found</p>
-            </main>
-          }
-        />
-      </Routes>
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>404 page not found</p>
+              </main>
+            }
+          />
+        </Routes>
+      </AppContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
