@@ -13,6 +13,7 @@ function App() {
       >
         <Link to={"/dailyoverview"}>Daily Overview</Link>
         <Link to={"/routine"}>Routine</Link>
+        <Link to={"/deadlineview"}>Deadlines</Link>
       </nav>
       <Outlet />
     </div>

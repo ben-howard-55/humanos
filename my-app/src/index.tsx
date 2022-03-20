@@ -11,6 +11,7 @@ import DailyOverview from "./routes/daily-overview";
 import Day from "./routes/day";
 
 import { AppContextProvider } from "./context";
+import { DeadlineView } from "./routes/deadline-view";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="routine" element={<Routine />} />
+            <Route path="deadlineview" element={<DeadlineView />} />
             <Route path="dailyoverview" element={<DailyOverview />}>
               <Route path=":date" element={<Day />} />
             </Route>
