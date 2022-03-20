@@ -1,5 +1,8 @@
-import { DeadlineDate } from "../mock-data/components/deadline-date";
+import { DeadlineDate } from "../components/deadline-date";
 import { deadline, deadlines } from "../types/deadline_types";
+
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 var dayjs = require("dayjs");
 var advancedFormat = require("dayjs/plugin/advancedFormat");
@@ -15,9 +18,9 @@ export const DeadlineView = () => {
   const deadlines: deadlines = { deadlines: [ds1, ds2] };
 
   return (
-    <div>
-      <h1>{currentMonth}</h1>
+    <Box>
+      <Typography variant="h3">{currentMonth}</Typography>
       <DeadlineDate date={currentDate} deadlines={deadlines} />
-    </div>
+    </Box>
   );
 };

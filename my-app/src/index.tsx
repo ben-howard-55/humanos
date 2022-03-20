@@ -13,6 +13,11 @@ import Day from "./routes/day";
 import { AppContextProvider } from "./context";
 import { DeadlineView } from "./routes/deadline-view";
 
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -24,15 +29,15 @@ ReactDOM.render(
             <Route path="dailyoverview" element={<DailyOverview />}>
               <Route path=":date" element={<Day />} />
             </Route>
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>404 page not found</p>
+                </main>
+              }
+            />
           </Route>
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>404 page not found</p>
-              </main>
-            }
-          />
         </Routes>
       </AppContextProvider>
     </BrowserRouter>

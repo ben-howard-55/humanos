@@ -10,7 +10,7 @@ export default function Day() {
 
   let day = getDay(params.date);
   if (!day) {
-    console.error("date not found!");
+    console.log("date not found!");
     return <Navigate to={"/dailyoverview"} />;
   }
 
@@ -18,7 +18,7 @@ export default function Day() {
     <>
       <div>
         {day.schedule.map((task) => (
-          <div>
+          <div key={task.title}>
             <h1>{task.title}</h1>
             <h2>{task.details}</h2>
             <p>{task.type}</p>

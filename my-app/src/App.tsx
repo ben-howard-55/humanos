@@ -1,22 +1,15 @@
+import { AppBar, Grid, Toolbar, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import "./App.css";
 
+import ResponsiveAppBar from "./components/navbar";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Humanos</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to={"/dailyoverview"}>Daily Overview</Link>
-        <Link to={"/routine"}>Routine</Link>
-        <Link to={"/deadlineview"}>Deadlines</Link>
-      </nav>
+    <Grid container className="App">
+      <ResponsiveAppBar />
       <Outlet />
-    </div>
+    </Grid>
   );
 }
 
