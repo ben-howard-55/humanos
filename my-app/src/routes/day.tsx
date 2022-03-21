@@ -1,5 +1,22 @@
+import {
+  Divider,
+  Grid,
+  Accordion,
+  Stepper,
+  AccordionSummary,
+  Typography,
+  AccordionDetails,
+  StepLabel,
+  Step,
+  Card,
+  CardContent,
+} from "@mui/material";
 import { Navigate, useParams } from "react-router-dom";
 import { getDay } from "../mock-data/day-example";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { margin } from "@mui/system";
+import { blue } from "@mui/material/colors";
 
 export default function Day() {
   let params = useParams();
@@ -15,18 +32,37 @@ export default function Day() {
   }
 
   return (
-    <>
-      <div>
-        {day.schedule.map((task) => (
-          <div key={task.title}>
-            <h1>{task.title}</h1>
-            <h2>{task.details}</h2>
-            <p>{task.type}</p>
-            <p>{task.startTime}</p>
-            <p>{task.endTime}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <Grid container display={"flex"}>
+      <Grid sx={{ margin: "0 auto", padding: "12px 0", width: "80%" }}>
+        <Divider>Wake up at 6am</Divider>
+      </Grid>
+      <Grid container display="flex">
+        <Grid>
+          <Typography variant="body1" paddingLeft={"12px"}>
+            6:00am
+          </Typography>
+        </Grid>
+        <Grid container xs={12} display="flex" justifyContent="space-between">
+          <Grid item xs={1} justifyContent={"center"}>
+            <Divider orientation="vertical" />
+          </Grid>
+          <Grid
+            item
+            xs={9}
+            sx={{
+              backgroundColor: "#3C2E48",
+              marginRight: "1.5rem",
+              borderRadius: "10px",
+            }}
+          >
+            <Typography>Routine</Typography>
+            <Typography>Morning Routine</Typography>
+            <Typography variant="body1">
+              Coffee, breakfast, skin care.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }

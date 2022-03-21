@@ -7,8 +7,6 @@ export default function DailyOverview() {
   return (
     <>
       <div>
-        <p>wake up at 6.30am</p>
-        <Link to={`/dailyoverview/${date}`}>{date}</Link>
         <Outlet />
       </div>
     </>
